@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary - Rizwana Kankudti And Zulfiquar Kankudti</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  
+  <!-- AOS CSS for scroll animations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <style>
+    /* Loading Overlay Styles */
+    #loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #333;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1s ease;
+    }
+    #loading-overlay.fade-out {
+      opacity: 0;
+    }
+    /* Spinner Animation */
+    .spinner {
+      border: 12px solid #f3f3f3;
+      border-top: 12px solid #f6d365;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    nav ul li a:hover {
+      color: #f6d365;
+    }
+    /* Music Toggle Button in Nav */
+    #music-toggle {
+      border: 1px solid #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.9em;
+      background: transparent;
+    }
+
+    /* Header Section with Video Background */
+    header {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      object-fit: cover;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+    header .content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      padding: 20px;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 5em;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    #celebrate-btn {
+      padding: 10px 20px;
+      font-size: 1.1em;
+      background: #f6d365;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #celebrate-btn:hover {
+      background: #fda085;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.8em;
+      color: #444;
+    }
+
+    /* Our Time Together Section (Elapsed Timer) */
+    #time-together {
+      background: #f0f0f0;
+      border-radius: 10px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    #timer {
+      font-size: 1.8em;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .time-box {
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      min-width: 120px;
+    }
+
+    /* Gallery Section */
+    #gallery .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .gallery-item-container {
+      width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .gallery-item-container img.gallery-item {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item-container img.gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    /* Animated Family Tree Section */
+    #family-tree .animated-tree-container {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      margin: auto;
+      background: #fafafa;
+    }
+    .parents-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 800px;
+      height: 200px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 100px;
+    }
+    .union-node {
+      position: absolute;
+      top: 200px;
+      left: 350px;
+      width: 100px;
+      text-align: center;
+      opacity: 0;
+    }
+    .children-container {
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      width: 800px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .tree-node {
+      text-align: center;
+      opacity: 0;
+      transform: scale(0);
+    }
+    .tree-node img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border: 3px solid #f6d365;
+    }
+    @keyframes fadeInPop {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .parents-container .tree-node {
+      animation: fadeInPop 0.8s forwards;
+      animation-delay: 0.5s;
+    }
+    .union-node {
+      animation: fadeInPop 0.8s forwards;
+      animation-delay: 1s;
+    }
+    .children-container .tree-node {
+      animation: fadeInPop 0.8s forwards;
+      animation-delay: 2s;
+    }
+    .tree-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    .tree-line {
+      stroke: #f6d365;
+      stroke-width: 2;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: drawLine 2s forwards;
+      animation-delay: 1.5s;
+    }
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Time Capsule Section */
+    #time-capsule {
+      background: #f0f0f0;
+      border-radius: 10px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    #time-capsule-status {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    #capsule-timer {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+
+    /* Love Quotes Slider Section */
+    #quotes {
+      background: #fff0f0;
+      padding: 40px 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    #quotes p {
+      font-size: 1.5em;
+      font-style: italic;
+      color: #b22222;
+    }
+
+    /* Messages Section (Simple Guestbook) */
+    #messages form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #messages textarea {
+      padding: 10px;
+      font-size: 1em;
+      resize: vertical;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    #messages button {
+      padding: 10px;
+      font-size: 1.1em;
+      background: #f6d365;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #messages button:hover {
+      background: #fda085;
+    }
+    #message-list {
+      margin-top: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .message-item {
+      background: #f0f0f0;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    /* Digital Scrapbook Section */
+    #scrapbook {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 40px 20px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .scrapbook-container {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .scrapbook-slide {
+      display: none;
+      text-align: center;
+    }
+    .scrapbook-slide.active {
+      display: block;
+    }
+    .scrapbook-slide img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .scrapbook-prev, .scrapbook-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      font-size: 2em;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .scrapbook-prev { left: 10px; }
+    .scrapbook-next { right: 10px; }
+
+    /* Video Montage Section */
+    #video-montage { text-align: center; }
+
+    /* Social Share Section */
+    #social-share {
+      text-align: center;
+      margin-top: 20px;
+    }
+    #social-share a {
+      margin: 0 10px;
+      font-size: 1.2em;
+      color: #333;
+      transition: color 0.3s;
+    }
+    #social-share a:hover {
+      color: #f6d365;
+    }
+
+    /* Scroll-to-Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #f6d365;
+      color: #333;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+      font-size: 1.2em;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    /* Modal Styles (for Gallery & Parent Photo Enlargement) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 100%;
+      position: relative;
+      animation: fadeIn 0.5s;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5em;
+      color: #333;
+      cursor: pointer;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Floating Hearts Animation */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      font-size: 24px;
+      color: rgba(255, 0, 0, 0.7);
+      animation: floatUp 5s linear forwards;
+      pointer-events: none;
+      z-index: 500;
+    }
+    @keyframes floatUp {
+      0% { transform: translateX(0) translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateX(var(--x, 0px)) translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 { font-size: 3em; }
+      header p { font-size: 1.2em; }
+      #gallery .gallery-grid { flex-direction: column; align-items: center; }
+      #family-tree .animated-tree-container { width: 100%; height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#journey">Our Journey</a></li>
+      <li><a href="#time-together">Our Time Together</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#family-tree">Family Tree</a></li>
+      <li><a href="#time-capsule">Time Capsule</a></li>
+      <li><a href="#quotes">Love Quotes</a></li>
+      <li><a href="#messages">Messages</a></li>
+      <li><a href="#scrapbook">Digital Scrapbook</a></li>
+      <li><a href="#video-montage">Video Montage</a></li>
+      <li><a href="#social-share">Share</a></li>
+      <li><a id="music-toggle">Music: Off</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header Section -->
+  <header id="home">
+    <video autoplay muted loop playsinline>
+      <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="content" data-aos="fade-up">
+      <h1>Happy Anniversary</h1>
+      <p>Celebrating the love of [Couple Name]</p>
+      <button id="celebrate-btn">Celebrate!</button>
+    </div>
+  </header>
+
+  <!-- Our Journey Section -->
+  <section id="journey" data-aos="fade-up">
+    <h2 class="section-title">Our Journey</h2>
+    <p style="text-align: center; max-width: 800px; margin: auto;">
+      From the moment we met, every step together has woven a beautiful tapestry of love, laughter, and adventure. Explore the moments that have defined our story.
+    </p>
+  </section>
+
+  <!-- Our Time Together Section -->
+  <section id="time-together" data-aos="fade-up">
+    <h2 class="section-title">Our Time Together</h2>
+    <p style="text-align:center;">Cherishing every moment since February 16, 2003</p>
+    <div id="timer">
+      <div class="time-box" id="years">0 Years</div>
+      <div class="time-box" id="days">0 Days</div>
+      <div class="time-box" id="hours">0 Hours</div>
+      <div class="time-box" id="minutes">0 Minutes</div>
+      <div class="time-box" id="seconds">0 Seconds</div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" data-aos="fade-up">
+    <h2 class="section-title">Memories Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item-container">
+        <img src="https://via.placeholder.com/300x200?text=Memory+1" alt="Memory 1" class="gallery-item" />
+      </div>
+      <div class="gallery-item-container">
+        <img src="https://via.placeholder.com/300x200?text=Memory+2" alt="Memory 2" class="gallery-item" />
+      </div>
+      <div class="gallery-item-container">
+        <img src="https://via.placeholder.com/300x200?text=Memory+3" alt="Memory 3" class="gallery-item" />
+      </div>
+      <div class="gallery-item-container">
+        <img src="https://via.placeholder.com/300x200?text=Memory+4" alt="Memory 4" class="gallery-item" />
+      </div>
+      <div class="gallery-item-container">
+        <img src="https://via.placeholder.com/300x200?text=Memory+5" alt="Memory 5" class="gallery-item" />
+      </div>
+      <div class="gallery-item-container">
+        <img src="https://via.placeholder.com/300x200?text=Memory+6" alt="Memory 6" class="gallery-item" />
+      </div>
+      <div class="gallery-item-container">
+        <img src="https://via.placeholder.com/300x200?text=Memory+7" alt="Memory 7" class="gallery-item" />
+      </div>
+      <div class="gallery-item-container">
+        <img src="https://via.placeholder.com/300x200?text=Memory+8" alt="Memory 8" class="gallery-item" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Animated Family Tree Section -->
+  <section id="family-tree" data-aos="fade-up">
+    <h2 class="section-title">Family Tree</h2>
+    <div class="animated-tree-container">
+      <div class="parents-container">
+        <div class="tree-node parent" id="parent1" data-description="Parent 1: A loving partner and the foundation of our family.">
+          <img src="https://via.placeholder.com/100?text=Parent+1" alt="Parent 1" />
+          <p>Parent 1</p>
+        </div>
+        <div class="tree-node parent" id="parent2" data-description="Parent 2: A caring and inspiring figure who has given us endless love.">
+          <img src="https://via.placeholder.com/100?text=Parent+2" alt="Parent 2" />
+          <p>Parent 2</p>
+        </div>
+      </div>
+      <div class="union-node">
+        <span class="union-icon" style="font-size:2em;">❤️</span>
+      </div>
+      <div class="children-container">
+        <div class="tree-node child">
+          <img src="https://via.placeholder.com/100?text=Child+1" alt="Child 1" />
+          <p>Child 1</p>
+        </div>
+        <div class="tree-node child">
+          <img src="https://via.placeholder.com/100?text=Child+2" alt="Child 2" />
+          <p>Child 2</p>
+        </div>
+        <div class="tree-node child">
+          <img src="https://via.placeholder.com/100?text=Child+3" alt="Child 3" />
+          <p>Child 3</p>
+        </div>
+      </div>
+      <svg class="tree-svg" width="800" height="600" viewBox="0 0 800 600">
+        <line class="tree-line" x1="200" y1="150" x2="400" y2="250" />
+        <line class="tree-line" x1="600" y1="150" x2="400" y2="250" />
+        <line class="tree-line" x1="400" y1="250" x2="200" y2="450" />
+        <line class="tree-line" x1="400" y1="250" x2="400" y2="450" />
+        <line class="tree-line" x1="400" y1="250" x2="600" y2="450" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Time Capsule Section -->
+  <section id="time-capsule" data-aos="fade-up">
+    <h2 class="section-title">Time Capsule</h2>
+    <div id="time-capsule-status"></div>
+    <div id="time-capsule-content" style="display:none;">
+      <p>The Time Capsule is now OPEN! Enjoy the memories from this cycle.</p>
+    </div>
+    <div id="time-capsule-timer" style="display:none;">
+      <p>Time Capsule will open in:</p>
+      <div id="capsule-timer"></div>
+    </div>
+  </section>
+
+  <!-- Love Quotes Section -->
+  <section id="quotes" data-aos="fade-up">
+    <h2 class="section-title">Love Quotes</h2>
+    <p id="quote-text">"Love is composed of a single soul inhabiting two bodies."</p>
+  </section>
+
+  <!-- Messages Section (Guestbook) -->
+  <section id="messages" data-aos="fade-up">
+    <h2 class="section-title">Leave a Love Message</h2>
+    <form id="message-form">
+      <textarea id="message-input" rows="4" placeholder="Share your love and wishes..."></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="message-list"></div>
+  </section>
+
+  <!-- Digital Scrapbook Section -->
+  <section id="scrapbook" data-aos="fade-up">
+    <h2 class="section-title">Digital Scrapbook</h2>
+    <div class="scrapbook-container">
+      <div class="scrapbook-slide active">
+        <img src="https://via.placeholder.com/800x600?text=Scrapbook+Page+1" alt="Scrapbook Page 1">
+        <p>Caption for Scrapbook Page 1</p>
+      </div>
+      <div class="scrapbook-slide">
+        <img src="https://via.placeholder.com/800x600?text=Scrapbook+Page+2" alt="Scrapbook Page 2">
+        <p>Caption for Scrapbook Page 2</p>
+      </div>
+      <div class="scrapbook-slide">
+        <img src="https://via.placeholder.com/800x600?text=Scrapbook+Page+3" alt="Scrapbook Page 3">
+        <p>Caption for Scrapbook Page 3</p>
+      </div>
+      <button class="scrapbook-prev">❮</button>
+      <button class="scrapbook-next">❯</button>
+    </div>
+  </section>
+
+  <!-- Video Montage Section -->
+  <section id="video-montage" data-aos="fade-up">
+    <h2 class="section-title">Video Montage</h2>
+    <div style="text-align: center;">
+      <video controls style="max-width: 100%; border-radius: 10px;">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <!-- Social Share Section -->
+  <section id="social-share" data-aos="fade-up">
+    <h2 class="section-title">Share the Love</h2>
+    <a href="#" title="Share on Facebook">Facebook</a>
+    <a href="#" title="Share on Twitter">Twitter</a>
+    <a href="#" title="Share on Instagram">Instagram</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 [Couple Name]. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scroll-to-Top Button -->
+  <button id="scrollToTop">▲</button>
+
+  <!-- Background Music (Hidden Audio Element) -->
+  <audio id="background-music" loop>
+    <source src="your-music-file.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Modal (for Gallery & Parent Photo Enlargement) -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <!-- AOS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Loading Animation: Wait until window loads
+    window.addEventListener("load", function() {
+      // Trigger a big bang confetti explosion
+      confetti({ particleCount: 300, spread: 100, origin: { x: 0.5, y: 0.5 } });
+      // After a short delay, fade out the loading overlay
+      setTimeout(() => {
+        const loadingOverlay = document.getElementById("loading-overlay");
+        loadingOverlay.classList.add("fade-out");
+        setTimeout(() => { loadingOverlay.remove(); }, 1000);
+      }, 1000);
+    });
+
+    // Initialize AOS animations
+    AOS.init({ duration: 1000, once: true });
+
+    // Smooth Scrolling for Navigation Links
+    document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) { target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // Celebrate Button - Trigger Confetti and Floating Hearts
+    document.getElementById('celebrate-btn').addEventListener('click', () => {
+      confetti({ particleCount: 150, spread: 60, origin: { y: 0.6 } });
+      for (let i = 0; i < 10; i++) {
+        setTimeout(spawnHeart, i * 200);
+      }
+    });
+
+    // Our Time Together Counter (Elapsed Time since Feb 16, 2003)
+    const marriageDate = new Date("2003-02-16T00:00:00");
+    setInterval(() => {
+      const now = new Date();
+      const diff = now - marriageDate;
+      const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById("years").textContent = years + " Years";
+      document.getElementById("days").textContent = days + " Days";
+      document.getElementById("hours").textContent = hours + " Hours";
+      document.getElementById("minutes").textContent = minutes + " Minutes";
+      document.getElementById("seconds").textContent = seconds + " Seconds";
+    }, 1000);
+
+    // Modal Functionality (for Gallery & Parent Photo Enlargement)
+    const modal = document.getElementById("modal");
+    const modalBody = document.getElementById("modal-body");
+    const modalClose = document.querySelector(".modal-close");
+    function openModal(content) {
+      modalBody.innerHTML = content;
+      modal.style.display = "flex";
+    }
+    modalClose.addEventListener("click", () => { modal.style.display = "none"; });
+    window.addEventListener("click", (e) => { if (e.target === modal) { modal.style.display = "none"; } });
+
+    // Add click event listeners to parent photos for enlargement with description
+    document.querySelectorAll('.parents-container .tree-node').forEach(node => {
+      node.addEventListener('click', () => {
+        const imgSrc = node.querySelector('img').src;
+        const description = node.getAttribute('data-description') || '';
+        const content = `
+          <img src="${imgSrc}" style="width:100%; max-width:400px; border-radius:10px;">
+          <p style="margin-top:10px;">${description}</p>
+        `;
+        openModal(content);
+      });
+    });
+
+    // Modal for Gallery Items (clicking the image opens modal)
+    document.querySelectorAll(".gallery-item-container img.gallery-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const imgSrc = item.src;
+        openModal(`<img src="${imgSrc}" style="width:100%; border-radius:10px;">`);
+      });
+    });
+
+    // Guestbook (Simple Messages)
+    let messages = JSON.parse(localStorage.getItem("anniversaryMessages")) || [];
+    function displayMessages() {
+      const messageList = document.getElementById("message-list");
+      messageList.innerHTML = "";
+      messages.forEach((msg) => {
+        const div = document.createElement("div");
+        div.classList.add("message-item");
+        div.innerHTML = `<p>${msg.text}</p>`;
+        messageList.appendChild(div);
+      });
+    }
+    displayMessages();
+    const messageForm = document.getElementById("message-form");
+    const messageInput = document.getElementById("message-input");
+    messageForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const newMsg = messageInput.value.trim();
+      if (newMsg !== "") {
+        messages.push({ text: newMsg });
+        localStorage.setItem("anniversaryMessages", JSON.stringify(messages));
+        displayMessages();
+        messageInput.value = "";
+      }
+    });
+
+    // Digital Scrapbook Slider
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.scrapbook-slide');
+    const totalSlides = slides.length;
+    document.querySelector('.scrapbook-prev').addEventListener('click', () => {
+      showSlide(currentSlide - 1);
+    });
+    document.querySelector('.scrapbook-next').addEventListener('click', () => {
+      showSlide(currentSlide + 1);
+    });
+    function showSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (n + totalSlides) % totalSlides;
+      slides[currentSlide].classList.add('active');
+    }
+
+    // Background Music Toggle
+    const musicToggle = document.getElementById("music-toggle");
+    const backgroundMusic = document.getElementById("background-music");
+    let isMusicPlaying = false;
+    musicToggle.addEventListener("click", () => {
+      if (isMusicPlaying) { backgroundMusic.pause(); musicToggle.textContent = "Music: Off"; }
+      else { backgroundMusic.play(); musicToggle.textContent = "Music: On"; }
+      isMusicPlaying = !isMusicPlaying;
+    });
+
+    // Scroll-to-Top Button
+    const scrollToTopBtn = document.getElementById("scrollToTop");
+    window.addEventListener("scroll", () => {
+      scrollToTopBtn.style.display = window.pageYOffset > 300 ? "block" : "none";
+    });
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Floating Hearts Animation
+    function spawnHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.setProperty("--x", (Math.random() * 50 - 25) + "px");
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(spawnHeart, 800);
+
+    // Time Capsule Functionality (Feb 16th to Feb 17th cycle)
+    function updateTimeCapsule() {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      let openStart = new Date(currentYear, 1, 16, 0, 0, 0);
+      let openEnd = new Date(currentYear, 1, 17, 0, 0, 0);
+      let nextOpen;
+      if (now >= openStart && now < openEnd) {
+        document.getElementById("time-capsule-status").textContent = "Time Capsule is OPEN!";
+        document.getElementById("time-capsule-content").style.display = "block";
+        document.getElementById("time-capsule-timer").style.display = "none";
+      } else {
+        if (now < openStart) { nextOpen = openStart; }
+        else { nextOpen = new Date(currentYear + 1, 1, 16, 0, 0, 0); }
+        document.getElementById("time-capsule-status").textContent = "Time Capsule is CLOSED.";
+        document.getElementById("time-capsule-content").style.display = "none";
+        document.getElementById("time-capsule-timer").style.display = "block";
+        const diff = nextOpen - now;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        document.getElementById("capsule-timer").textContent =
+          days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";
+      }
+    }
+    setInterval(updateTimeCapsule, 1000);
+  </script>
+</body>
+</html>
